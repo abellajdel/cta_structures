@@ -2,30 +2,31 @@
 #include"cta_queue.h"
 using namespace std;
 
-
-QueueElement::QueueElement(){
+template <class T>
+QueueElement<T>::QueueElement(){
     data = 0;
     prev = next = NULL;
 }
 
-
-void QueueElement::setData(int _data){
+template <class T>
+void QueueElement<T>::setData(T _data){
     data = _data;
 }
 
-
-int QueueElement::getData(void){
+template <class T>
+T QueueElement<T>::getData(void){
     return data;
 }
 
 
-
-CTAQueue::CTAQueue(){
+template <class T>
+CTAQueue<T>::CTAQueue(){
     first = last = NULL;
 }
 
 
-void CTAQueue::add(QueueElement *new_element){
+template <class T>
+void CTAQueue<T>::add(QueueElement<T> *new_element){
     if(first==NULL && last==NULL){
         new_element->next = new_element->prev = NULL;
         first = last = new_element;
@@ -38,8 +39,9 @@ void CTAQueue::add(QueueElement *new_element){
 }
 
 
-QueueElement* CTAQueue::remove(void){
-    QueueElement *return_element;
+template <class T>
+QueueElement<T>* CTAQueue<T>::remove(void){
+    QueueElement<T> *return_element;
 
     if(first==NULL) return NULL;
 
